@@ -1,5 +1,5 @@
 ;;;; Simple tokens ;;;;
-(terminal) @string.grammar
+(terminal) @string.literal
 
 (comment) @comment.block
 
@@ -16,7 +16,7 @@
 ((identifier) @symbol.grammar.camel
  (#match? @symbol.grammar.camel "^[a-z]"))
 
-(identifier) @symbol.grammar
+(identifier) @variable
 
 (codepoint) @string.codepoint
 

@@ -8,24 +8,25 @@ module.exports = grammar({
   ],
 
   rules: {
-    terminal: $ => /'[^']*'|"[^"]*"/,
-    codepoint: $ => /#x[0-0a-fA-F]/,
-    identifier: $ => /[a-zA-Z][a-zA-Z0-9_]*/,
-    comment: $ => /\/\*[^*]*\*+(?:[^)*][^*]*\*+)*\//,
-
     rules: $ => repeat1($.rule),
 
-    rule: $ => seq(
+    terminal: $ => /'[^']*'|"[^"]*"/,
+    codepoint: $ => /#x[0-9a-fA-F]+/,
+    identifier: $ => /[a-zA-Z][a-zA-Z0-9_]*/,
+    comment: $ => /\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\//,
+
+
+    rule: $ => field('rule', seq(
       field('symbol', $.identifier),
       '=',
       field('expression',
-        optional($.expr)), 
+        $.expr), 
       ';'
-    ),
+    )),
 
     expr: $ => choice(
+      repeat1(seq($._atom, optional($.quantifier))),
       $.binary_expression,
-      seq($._atom, optional($.quantifier)),
     ),
 
     _atom: $ => choice(
