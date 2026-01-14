@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RubixDev/ebnf.git",
+    "url": "https://github.com/Aleod-m/ebnf.git",
     "directory": "packages/tree-sitter-ebnf"
   },
   "keywords": ["parser", "lexer"],
-  "author": "RubixDev",
+  "author": "Aleod-m",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/RubixDev/tree-sitter-ebnf/issues"

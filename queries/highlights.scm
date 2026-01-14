@@ -1,10 +1,6 @@
 ;;;; Simple tokens ;;;;
 (terminal) @string.grammar
 
-(special_sequence) @string.special.grammar
-
-(integer) @number
-
 (comment) @comment.block
 
 ;;;; Identifiers ;;;;
@@ -22,15 +18,19 @@
 
 (identifier) @symbol.grammar
 
+(codepoint) @string.codepoint
+
 ;;; Punctuation ;;;;
 [
  ";"
- ","
 ] @punctuation.delimiter
 
 [
+ "="
  "|"
  "*"
+ "+"
+ "?"
  "-"
 ] @operator
 
@@ -41,6 +41,4 @@
  ")"
  "["
  "]"
- "{"
- "}"
 ] @punctuation.bracket
